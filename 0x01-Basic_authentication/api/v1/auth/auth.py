@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module contains the auth class
+This module contains the Auth class
 """
 
 from flask import request
@@ -42,11 +42,3 @@ class Auth:
         Current User
         """
         return None
-
-
-class BasicAuth(Auth):
-    """
-    This is a class for basic authentication
-    """
-
-    pass
