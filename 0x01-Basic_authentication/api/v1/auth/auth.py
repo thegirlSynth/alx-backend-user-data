@@ -20,8 +20,8 @@ class Auth:
         if not path or not excluded_paths or len(excluded_paths) == 0:
             return True
 
-        if path[-1] != "/":
-            path + "/"
+        if not path.endswith("/"):
+            path += "/"
 
         if path not in excluded_paths:
             return True
