@@ -42,3 +42,11 @@ class Auth:
         Current User
         """
         return None
+
+
+class BasicAuth(Auth):
+    """
+    This is a class for basic authentication
+    """
+
+    pass
