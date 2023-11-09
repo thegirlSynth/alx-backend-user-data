@@ -59,8 +59,8 @@ class BasicAuth(Auth):
         ):
             return (None, None)
 
-        email = decoded_base64_authorization_header.split(":")[0]
-        password = decoded_base64_authorization_header.split(":")[1]
+        split = decoded_base64_authorization_header.split(":", 1)
+        email, password = split
 
         return (email, password)
 
@@ -99,10 +99,3 @@ class BasicAuth(Auth):
         )
 
         return user
-
-
-# You must use authorization_header
-# You must use extract_base64_authorization_header
-# You must use decode_base64_authorization_header
-# You must use extract_user_credentials
-# You must use user_object_from_credentials
