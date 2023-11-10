@@ -5,7 +5,7 @@ This module contains the Auth class
 
 from flask import request
 from typing import List, TypeVar
-import re
+import fnmatch
 
 
 class Auth:
@@ -28,7 +28,7 @@ class Auth:
             return False
 
         for excluded in excluded_paths:
-            if re.match(excluded, path):
+            if fnmatch.fnmatchcase(path, excluded):
                 return False
         return True
 
