@@ -5,6 +5,7 @@ This module contains the Auth class
 
 from flask import request
 from typing import List, TypeVar
+import os
 
 
 class Auth:
@@ -42,3 +43,16 @@ class Auth:
         Current User
         """
         return None
+
+    def session_cookie(self, request=None):
+        """
+        Returns a cookie value from a request
+        """
+
+        if not request:
+            return None
+
+        session_id = os.environ.get("SESSION_NAME")
+        cookie = request.cookies.get(session_id)
+
+        return cookie
