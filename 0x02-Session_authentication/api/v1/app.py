@@ -24,6 +24,11 @@ if os.environ.get("AUTH_TYPE") == "basic_auth":
 
     auth = BasicAuth()
 
+if os.environ.get("AUTH_TYPE") == "session_auth":
+    from api.v1.auth.session_auth import SessionAuth
+
+    auth = SessionAuth()
+
 
 @app.before_request
 def before_request():
@@ -45,6 +50,9 @@ def before_request():
                 abort(401)
 
             request.current_user = auth.current_user(request)
+            user = request.current_user
+            if not user:
+                abort(403)
 
 
 @app.errorhandler(404)
