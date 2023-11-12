@@ -51,7 +51,7 @@ def logout():
     """
     DELETE /auth_session/logout
     Return:
-      - The User instance
+      - {}
     """
 
     from api.v1.app import auth
