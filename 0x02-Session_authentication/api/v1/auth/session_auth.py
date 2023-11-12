@@ -9,7 +9,7 @@ from models.user import User
 
 class SessionAuth(Auth):
     """
-    This is a class for basic authentication
+    This is a class for session authentication
     """
 
     user_id_by_session_id = {}
