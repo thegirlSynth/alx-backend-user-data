@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 DB module
 """
@@ -44,3 +45,6 @@ class DB:
         session.commit()
 
         return new_user
+
+    def find_user_by(self):
+        """ """
