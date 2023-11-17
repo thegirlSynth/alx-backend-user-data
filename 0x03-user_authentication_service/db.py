@@ -71,16 +71,16 @@ class DB:
         Updates a user's attributes
         """
 
-        try:
-            session = self._session
-            user = self.find_user_by(id=user_id)
+        session = self._session
+        user = self.find_user_by(id=user_id)
 
-            if not user:
-                raise NoResultFound
+        if not user:
+            raise NoResultFound
 
-            for attr, value in kwargs.items():
-                if hasattr(user, attr):
-                    setattr(user, attr, value)
+        for attr, value in kwargs.items():
+            if hasattr(user, attr):
+                setattr(user, attr, value)
+            else:
+                raise ValueError
 
-        except AttributeError:
-            raise ValueError()
+        session.commit()
