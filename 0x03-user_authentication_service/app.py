@@ -66,8 +66,7 @@ def logout():
     if not user:
         abort(403)
 
-    id = getattr(user, id)
-    AUTH.destroy_session(id)
+    setattr(user, "session_id", None)
 
     return redirect("/")
 
