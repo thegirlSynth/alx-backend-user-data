@@ -8,6 +8,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from db import DB
 from user import User
 import uuid
+from typing import Optional
 
 
 def _hash_password(password: str) -> bytes:
@@ -67,3 +68,15 @@ class Auth:
 
         except NoResultFound:
             return False
+
+    def create_session(self, email: str) -> Optional[str]:
+        """
+        Creates a Session
+        """
+        try:
+            user = self._db.find_user_by(email=email)
+            session_id = _generate_uuid()
+            setattr(user, "session_id", session_id)
+            return session_id
+        except NoResultFound:
+            return None
